@@ -1,0 +1,71 @@
+(* Merr file for merr *)
+
+module Tokens = E_parser
+open E_parser
+open E_token
+
+let message = function
+  | "open" -> function
+      | EOF                     -> "expected module name after 'open'"
+      | TK_IDENTIFIER           -> "unexpected identifier `%s' after 'open'"
+                                   "expected module name (capitalised)"
+      | _                       -> "unexpected token '%s' after 'open'"
+
+  | "open Foo" -> function
+      | EOF			-> "expected handler definition before end of input"
+      | _                       -> "unexpected token '%s' after prologue"
+
+  | "open Foo let" -> function
+      | EOF			-> "expected handler name before end of input"
+      | TK_TYCON		-> "unexpected type constructor `%s' in handler definition"
+      				   "expected identifier (lowercase)"
+      | _                       -> "unexpected token '%s' in handler definition"
+
+  | "open Foo let message" -> function
+      | EOF			-> "expected '=' in handler definition"
+      | _                       -> "unexpected token '%s' in handler definition"
+
+  | "open Foo let message =" -> function
+      | EOF			-> "expected 'function' in handler definition"
+      | _                       -> "unexpected token '%s' in handler definition"
+
+  | "open Foo let message = function" -> function
+      | EOF			-> "expected '|'-separated code fragments"
+      | _                       -> "unexpected token '%s' where code fragments expected"
+
+  | "open Foo let message = function |" -> function
+      | _                       -> "expected code fragment string"
+
+  | "open Foo let message = function | \"hello\" " -> function
+      | _                       -> "expected '->' followed by handlers or '|' followed by another code fragment"
+
+  | "open Foo let message = function | \"hello\" ->" -> function
+      | _                       -> "expected 'default', 'function' or an error message string"
+
+  | "open Foo let message = function | \"hello\" -> function" -> function
+      | _                       -> "expected '|'-separated lookahead token cases"
+      				   "the token case list must be terminated with a default case '_'"
+
+  | "open Foo let message = function | \"hello\" -> function |" -> function
+      | TK_IDENTIFIER           -> "unexpected identifier `%s'"
+                                   "expected token name (capitalised)"
+      | _                       -> "expected token name or '_' for default case"
+
+  | "open Foo let message = function | \"hello\" -> function | Foo |" -> function
+      | TK_IDENTIFIER           -> "unexpected identifier `%s'"
+                                   "expected token name (capitalised)"
+      | TK_UNDERSCORE           -> "default case cannot appear in the same handler as a token case"
+      | _                       -> "expected token name"
+
+
+  | "open Foo let message = function | \"hello\" -> function | Foo" -> function
+      | _                       -> "expected '->' followed by an error message (or 'default') or '|' followed by another token name"
+
+  | "open Foo let message = function | \"hello\" -> function | _" -> function
+      | _                       -> "expected '->' followed by an error message (or 'default')"
+
+  | "open Foo let message = function | \"hello\" -> function | Foo ->"
+  | "open Foo let message = function | \"hello\" -> function | _ ->" -> function
+      | _                       -> "expected an error message (or 'default')"
+
+  | "foo"                       -> "expected 'open'"

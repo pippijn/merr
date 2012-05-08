@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+
+use common::sense;
+
+my $merr = shift @ARGV;
+
+if (-f $merr) {
+   system $merr, @ARGV;
+   exit unless $? >> 8
+}
+
+for my $i (0 .. $#ARGV) {
+   if ($ARGV[$i] eq '-o') {
+      open my $fh, '>', $ARGV[$i + 1] or die $!;
+      print $fh <<EOF;
+let expected state = []
+let string_of_expected state token = "unexpected token"
+let message state token = Printf.sprintf "(%d)" state
+EOF
+   }
+}
