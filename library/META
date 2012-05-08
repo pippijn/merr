@@ -1,0 +1,9 @@
+# OASIS_START
+# DO NOT EDIT (digest: 2f070a1a4abc517b95ddb9e099cb48f4)
+version = "0.6"
+description = "Error handler support library"
+archive(byte) = "merr.cma"
+archive(native) = "merr.cmxa"
+exists_if = "merr.cma"
+# OASIS_STOP
+
