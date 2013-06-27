@@ -59,7 +59,7 @@ own error description.
 ```ocaml
 module Tokens = Etokens
 open Etoken (* provides string_of_token *)
-open Etokens (* provides the 'token' type *)
+open Tokens (* provides the 'token' type *)
 
 let message = function
   | "open" -> function
