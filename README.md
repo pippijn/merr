@@ -19,11 +19,11 @@ The merr program takes several inputs to produce its error message function
 from.
 
 ```
-  -t <terminals>
-  -e <errors.ml.in>
-  -a <automaton>
-  -p <parser command>
-  -o <output.ml>
+-t <terminals>
+-e <errors.ml.in>
+-a <automaton>
+-p <parser command>
+-o <output.ml>
 ```
 
 ### Terminal names
@@ -32,17 +32,17 @@ The terminals file contains an ocamlyacc grammar or tokens file amended with
 token names. An extract of this file could look like this:
 
 ```ocaml
-  %token<string>	TkIDENTIFIER	"identifier"
-  %token		TkIF		"if"
-  %token		TkTHEN		"then"
-  %token		TkELSE		"else"
+%token<string>	TkIDENTIFIER	"identifier"
+%token		TkIF		"if"
+%token		TkTHEN		"then"
+%token		TkELSE		"else"
 ```
 
 Merr uses these strings when producing default error messages, so that the
 user doesn't see the internal names like "TkIDENTIFIER". Since menhir doesn't
 understand these extra string literals after the token name, the grammar file
 needs to be preprocessed before passing it to the parser generator. A simple
-`sed -e 's/^\(%token[^"]*\w\+\)\s*".*"$/\1/'` will safely remove the string
+``sed -e 's/^\(%token[^"]*\w\+\)\s*".*"$/\1/'`` will safely remove the string
 literals as well as leading whitespace. This can be done in a `make` target
 like `%.mly: %.mly.in`.
 
@@ -57,19 +57,19 @@ has a similar syntax as OCaml itself. The following is an excerpt from merr's
 own error description.
 
 ```ocaml
-  module Tokens = Etokens
-  open Etoken (* provides string_of_token *)
-  open Etokens (* provides the 'token' type *)
+module Tokens = Etokens
+open Etoken (* provides string_of_token *)
+open Etokens (* provides the 'token' type *)
 
-  let message = function
-    | "open" -> function
-        | EOF			-> "expected module name after 'open'"
-        | TkIDENTIFIER		-> "unexpected identifier `%s' after 'open'"
-        			   "expected module name (capitalised)"
-	| _			-> "unexpected token '%s' in handler definition"
-    | "open Foo let message = function" -> function
-        | EOF			-> "expected '|'-separated code fragments"
-	| _			-> "unexpected token '%s' where code fragments expected"
+let message = function
+| "open" -> function
+| EOF			-> "expected module name after 'open'"
+| TkIDENTIFIER		-> "unexpected identifier `%s' after 'open'"
+                           "expected module name (capitalised)"
+| _			-> "unexpected token '%s' in handler definition"
+| "open Foo let message = function" -> function
+| EOF			-> "expected '|'-separated code fragments"
+| _			-> "unexpected token '%s' where code fragments expected"
 ```
 
 One or more `open` directives are always required, and the opened modules
