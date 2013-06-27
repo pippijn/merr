@@ -18,25 +18,25 @@ Usage
 The merr program takes several inputs to produce its error message function
 from.
 
-``
+```
   -t <terminals>
   -e <errors.ml.in>
   -a <automaton>
   -p <parser command>
   -o <output.ml>
-``
+```
 
 ### Terminal names
 
 The terminals file contains an ocamlyacc grammar or tokens file amended with
 token names. An extract of this file could look like this:
 
-``ocaml
+```ocaml
   %token<string>	TkIDENTIFIER	"identifier"
   %token		TkIF		"if"
   %token		TkTHEN		"then"
   %token		TkELSE		"else"
-``
+```
 
 Merr uses these strings when producing default error messages, so that the
 user doesn't see the internal names like "TkIDENTIFIER". Since menhir doesn't
@@ -56,7 +56,7 @@ and `token` is the token type constructor name, e.g. `TkIF`. The sample file
 has a similar syntax as OCaml itself. The following is an excerpt from merr's
 own error description.
 
-``ocaml
+```ocaml
   module Tokens = Etokens
   open Etoken (* provides string_of_token *)
   open Etokens (* provides the 'token' type *)
@@ -70,7 +70,7 @@ own error description.
     | "open Foo let message = function" -> function
         | EOF			-> "expected '|'-separated code fragments"
 	| _			-> "unexpected token '%s' where code fragments expected"
-``
+```
 
 One or more `open` directives are always required, and the opened modules
 should provide the function `val string_of_token : token -> string` and bring
