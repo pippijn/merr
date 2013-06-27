@@ -1,12 +1,13 @@
 merr
 ====
 
-Merr is a syntax error message generator for LR parsers. It passes samples of
-erroneous input to the parser and produces an error message function that
-produces the error message written in the sample file when the same syntax
-error occurs again.  with a modified version of the menhir parser generator.
-Adapting other parser generators such as ocamlyacc is probably not difficult.
-The modified menhir can be found at https://github.com/pippijn/menhir.
+Merr (Meta-ERRor) is a syntax error message generator for LR parsers. It
+passes samples of erroneous input to the parser and produces an error message
+function that produces the error message written in the sample file when the
+same syntax error occurs again.  with a modified version of the menhir parser
+generator. Adapting other parser generators such as ocamlyacc is probably not
+difficult. The modified menhir can be found at
+https://github.com/pippijn/menhir.
 
 This tool is based on ideas from Clinton Jeffery's "merr" tool at
 http://unicon.sourceforge.net/merr/. It is recommended to read the technical
