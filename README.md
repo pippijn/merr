@@ -73,11 +73,11 @@ let message = function
 ```
 
 One or more `open` directives are always required, and the opened modules
-should provide the function ```ocaml val string_of_token : token -> string```
-and bring the token type constructors into scope. Merr can generate a default
-function that return the strings in the terminals file, but usually you will
-want a better description, using the token data. There can be any number of
-`open` and `module` directives
+should provide the function `val string_of_token : token -> string` and bring
+the token type constructors into scope. Merr can generate a default function
+that return the strings in the terminals file, but usually you will want a
+better description, using the token data. There can be any number of `open`
+and `module` directives
 
 In error messages, the `%s` part of the message is replaced by the application
 of `string_of_token` with the erroneous token. So, for instance if that
