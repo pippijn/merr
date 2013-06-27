@@ -1,11 +1,7 @@
-All the files in this project are licenced under the GNU General Public
-Licence version 3 or higher, unless stated otherwise. A copy of this licence
-can be obtained from GNU at: http://www.gnu.org/licenses/gpl-3.0.html.
-
-Links to other licences that may be used by files in this project:
-  LGPL 2.1:	http://www.gnu.org/licenses/lgpl-2.1.html
-  LGPL 3.0:	http://www.gnu.org/licenses/lgpl-3.0.html
-  QPL 1.0:	http://opensource.org/licenses/QPL-1.0
+This project is licenced under the GNU General Public Licence version 3 or
+later, and the containing files are so, unless stated otherwise. A copy of
+this licence can be obtained from the GNU project website at:
+http://www.gnu.org/licenses/gpl-3.0.html.
 
 Authors:
 	Pippijn van Steenhoven <pip88nl@gmail.com>
