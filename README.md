@@ -67,6 +67,7 @@ let message = function
     | TkIDENTIFIER      -> "unexpected identifier `%s' after 'open'"
                            "expected module name (capitalised)"
     | _                 -> "unexpected token '%s' in handler definition"
+
   | "open Foo let message = function" -> function
     | EOF                 -> "expected '|'-separated code fragments"
     | _                   -> "unexpected token '%s' where code fragments expected"
