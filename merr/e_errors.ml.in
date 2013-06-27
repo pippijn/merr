@@ -1,7 +1,8 @@
 (* Merr file for merr *)
 
-module Tokens = E_parser
-open E_parser
+module Tokens = E_tokens
+
+open E_tokens
 open E_token
 
 let message = function

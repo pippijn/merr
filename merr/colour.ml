@@ -1,0 +1,8 @@
+let grey	s = "\027[1;30m" ^ s ^ "\027[0m"
+let red		s = "\027[1;31m" ^ s ^ "\027[0m"
+let green	s = "\027[1;32m" ^ s ^ "\027[0m"
+let yellow	s = "\027[1;33m" ^ s ^ "\027[0m"
+let blue	s = "\027[1;34m" ^ s ^ "\027[0m"
+let magenta	s = "\027[1;35m" ^ s ^ "\027[0m"
+let cyan	s = "\027[1;36m" ^ s ^ "\027[0m"
+let white	s = "\027[1;37m" ^ s ^ "\027[0m"

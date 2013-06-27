@@ -5,7 +5,7 @@ open Sexplib.Sexp
 exception Fatal of string
 
 let state_token_pair code =
-  let input, output = Unix.open_process (Merr_settings.program ^ " 2>&1") in
+  let input, output = Unix.open_process (Settings.program ^ " 2>&1") in
   output_string output code;
   close_out output;
 
@@ -119,7 +119,7 @@ let codegen out imports func table =
 
 
 let process import_out handler_out =
-  let errors = Merr_settings.errors in
+  let errors = Settings.errors in
   let input = Io.open_in errors in
   let lexbuf = 
     let open Lexing in
@@ -149,7 +149,7 @@ let process import_out handler_out =
 
   with E_parser.StateError (token, state) as e ->
 
-    begin if Merr_settings.merr then
+    begin if Settings.merr then
       Printf.fprintf stderr "(%d, %s)\n" state "token"
     else
       let string_of_position pos =

@@ -1,4 +1,4 @@
-open E_parser
+open E_tokens
 
 let token_name = function
   | TK_UNDERSCORE -> "TK_UNDERSCORE"

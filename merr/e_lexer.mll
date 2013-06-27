@@ -1,5 +1,5 @@
 {
-  open E_parser
+  open E_tokens
 
   let string_token str =
     let add_char (chars, escape) = function

@@ -1,5 +1,6 @@
+
 let output imports handler expected =
-  let output = Io.open_out Merr_settings.output in
+  let output = Io.open_out Settings.output in
   output_string output (Buffer.contents imports);
   begin if Buffer.length expected <> 0 then
     output_string output (Buffer.contents expected)
@@ -31,7 +32,7 @@ let () =
     let expected = Buffer.create 512 in
 
     let automerr =
-      match Merr_settings.automaton, Merr_settings.tokens with
+      match Settings.automaton, Settings.tokens with
       | "", "" -> None
       | "", _ -> raise (Invalid_argument ("-t does not make sense without -a"))
 
@@ -45,8 +46,8 @@ let () =
           Some (strings, states)
     in
 
-    if Merr_settings.errors <> "" then begin
-      Make_err.process imports handler
+    if Settings.errors <> "" then begin
+      MakeErr.process imports handler
     end;
 
     begin match automerr with

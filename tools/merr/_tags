@@ -1,4 +1,0 @@
-<{e_ast,make_err}.ml>: syntax_camlp4o, pkg_sexplib.syntax
-<*.ml>: pkg_batteries
-
-"e_parser.mlypack": dump
