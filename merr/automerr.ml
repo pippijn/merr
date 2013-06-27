@@ -4,8 +4,7 @@ open Sexplib.Sexp
 let bprintf = Printf.bprintf
 
 let codegen out strings states =
-  bprintf out "let expected state =\n";
-  bprintf out "  match state with\n";
+  bprintf out "let expected = function\n";
   List.iter (fun (State (state, productions, jumps)) ->
     let terms =
       List.fold_left (fun terms jump ->
