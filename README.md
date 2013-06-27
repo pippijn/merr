@@ -12,6 +12,7 @@ This tool is based on ideas from Clinton Jeffery's "merr" tool at
 http://unicon.sourceforge.net/merr/. It is recommended to read the technical
 paper introducing the concepts.
 
+
 Usage
 -----
 
@@ -52,9 +53,14 @@ like `%.mly: %.mly.in`.
 The second input expected by merr is the sample file. Merr works by passing
 each sample input to the parser, which should be instrumented to print a pair
 of `(state, token)` to its standard output. The `state` should be a number,
-and `token` is the token type constructor name, e.g. `TkIF`. The sample file
-has a similar syntax as OCaml itself. The following is an excerpt from merr's
-own error description.
+and `token` is the token type constructor name, e.g. `TkIF`.
+
+The parser should have a flag to disable error messages and print this
+state/token pair. The parser command and this flag should be passed to merr
+with the `-p` command line option.
+
+The sample file has a similar syntax as OCaml itself. The following is an
+excerpt from merr's own error description.
 
 ```ocaml
 module Tokens = Etokens
@@ -108,3 +114,14 @@ what tokens would allow a shift action in the parser. It will present the user
 with a list of token names (from the terminals file) that the parser might
 expect at the state where the error occurred. Menhir can produce an automaton
 description parseable by merr, using the option `-dump`.
+
+
+### Using the function
+
+After the parser has been run on the inputs and the error message function has
+been generated, it can be called when an error occurs in the parser. The
+modified menhir parser will raise an exception `StateError of int * token`
+where `token` is the token type used by the parser and the first argument is
+the state. These two can be passed to the error function with the signature
+`val message : int -> token -> string`. Further formatting can be done in the
+client of the error module.
