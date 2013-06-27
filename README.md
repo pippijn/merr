@@ -62,14 +62,14 @@ open Etoken (* provides string_of_token *)
 open Etokens (* provides the 'token' type *)
 
 let message = function
-| "open" -> function
-| EOF			-> "expected module name after 'open'"
-| TkIDENTIFIER		-> "unexpected identifier `%s' after 'open'"
+  | "open" -> function
+  | EOF			-> "expected module name after 'open'"
+  | TkIDENTIFIER	-> "unexpected identifier `%s' after 'open'"
                            "expected module name (capitalised)"
-| _			-> "unexpected token '%s' in handler definition"
-| "open Foo let message = function" -> function
-| EOF			-> "expected '|'-separated code fragments"
-| _			-> "unexpected token '%s' where code fragments expected"
+  | _			-> "unexpected token '%s' in handler definition"
+  | "open Foo let message = function" -> function
+  | EOF			-> "expected '|'-separated code fragments"
+  | _			-> "unexpected token '%s' where code fragments expected"
 ```
 
 One or more `open` directives are always required, and the opened modules
