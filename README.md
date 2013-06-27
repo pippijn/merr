@@ -32,10 +32,10 @@ The terminals file contains an ocamlyacc grammar or tokens file amended with
 token names. An extract of this file could look like this:
 
 ```ocaml
-%token<string>	TkIDENTIFIER	"identifier"
-%token		TkIF		"if"
-%token		TkTHEN		"then"
-%token		TkELSE		"else"
+%token<string>  TkIDENTIFIER    "identifier"
+%token          TkIF            "if"
+%token          TkTHEN          "then"
+%token          TkELSE          "else"
 ```
 
 Merr uses these strings when producing default error messages, so that the
@@ -63,13 +63,13 @@ open Etokens (* provides the 'token' type *)
 
 let message = function
   | "open" -> function
-  | EOF			-> "expected module name after 'open'"
-  | TkIDENTIFIER	-> "unexpected identifier `%s' after 'open'"
+  | EOF                 -> "expected module name after 'open'"
+  | TkIDENTIFIER        -> "unexpected identifier `%s' after 'open'"
                            "expected module name (capitalised)"
-  | _			-> "unexpected token '%s' in handler definition"
+  | _                   -> "unexpected token '%s' in handler definition"
   | "open Foo let message = function" -> function
-  | EOF			-> "expected '|'-separated code fragments"
-  | _			-> "unexpected token '%s' where code fragments expected"
+  | EOF                 -> "expected '|'-separated code fragments"
+  | _                   -> "unexpected token '%s' where code fragments expected"
 ```
 
 One or more `open` directives are always required, and the opened modules
