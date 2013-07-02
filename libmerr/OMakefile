@@ -5,7 +5,7 @@ Version		= 0.1
 
 # Sources
 Modules[] =
-	Levenshtein
-	Libmerr
+  Levenshtein
+  Libmerr
 
-ocaml-library ()
+library (.DEFAULT)

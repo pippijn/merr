@@ -3,30 +3,30 @@ Target		= merr
 
 # Sources
 Modules[] =
-	A_ast
-	A_errors
-	A_lexer
-	A_parser
-	Automerr
-	Colour
-	Diagnostics
-	E_ast
-	E_errors
-	E_lexer
-	E_parser
-	E_token
-	E_tokens
-	Io
-	MakeErr
-	Merr
-	Settings
-	T_lexer
+  A_ast
+  A_errors
+  A_lexer
+  A_parser
+  Automerr
+  Colour
+  Diagnostics
+  E_ast
+  E_errors
+  E_lexer
+  E_parser
+  E_token
+  E_tokens
+  Io
+  MakeErr
+  Merr
+  Settings
+  T_lexer
 
 # Library dependencies
-Requires[] =
-	batteries
-	merr
-	sexplib.syntax
+OCaml-Requires[] =
+  batteries
+  merr
+  sexplib.syntax
 
 # Camlp4
 Flags. +=
@@ -34,6 +34,6 @@ Flags. +=
   $|e_ast.ml|		= -syntax camlp4o
   $|makeErr.ml|		= -syntax camlp4o
 
-RUNMERR		= merr.opt -merr -e -
+RUNMERR		= merr.native -merr -e -
 
-ocaml-program ()
+program (.DEFAULT)
