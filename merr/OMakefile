@@ -1,5 +1,5 @@
 # Target
-Target		= merr
+Name		= merr
 
 # Sources
 Modules[] =
@@ -36,4 +36,4 @@ Flags. +=
 
 RUNMERR		= merr.native -merr -e -
 
-program (.DEFAULT)
+program-install (.DEFAULT)
