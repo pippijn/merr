@@ -1,1 +1,1 @@
-.SUBDIRS: $(glob D, *)
+recurse-into ($(glob D, *))
