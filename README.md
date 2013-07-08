@@ -126,3 +126,9 @@ where `token` is the token type used by the parser and the first argument is
 the state. These two can be passed to the error function with the signature
 `val message : int -> token -> string`. Further formatting can be done in the
 client of the error module.
+
+### Ocamlbuild integration
+
+Merr can be easily integrated with ocamlbuild. See its own
+[myocamlbuild.ml](myocamlbuild.ml) and [_tags](_tags) files to understand how
+to do that.
