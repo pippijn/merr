@@ -1,0 +1,3 @@
+let expected state = []
+let string_of_expected state token = "unexpected token"
+let message state token = Printf.sprintf "(%d)" state
