@@ -1,0 +1,7 @@
+true:use_menhir,package(batteries),package(sexplib)
+
+"merr":include
+"libmerr":include
+<merr/*.ml*>:syntax(camlp4o),package(sexplib.syntax)
+"merr/e_parser.mlypack":external_tokens(E_tokens),dump
+
