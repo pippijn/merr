@@ -15,7 +15,7 @@ let dstring	= '"'  ('\\' _ | [^ '\\' '"' ])* '"'
 let ws      = [' ' '\t']
 
 rule token = parse
-  | "%token" (toktype as ty)? ws+ (term as term) ws+ (dstring as str)
+  | "%token" ws* (toktype as ty)? ws+ (term as term) ws+ (dstring as str)
       { (ty, term, str) }
 
   | "%%"
