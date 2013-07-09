@@ -1,4 +1,4 @@
-let output_tycon_function output strings =
+let output_name_function output strings =
   output_string output "let name_of_token = function\n";
   Hashtbl.iter (fun name _ ->
     output_string output "  | ";
@@ -6,6 +6,17 @@ let output_tycon_function output strings =
     output_string output " _ -> \"";
     output_string output (String.escaped name);
     output_string output "\"\n";
+  ) strings
+
+
+let output_desc_function output strings =
+  output_string output "let desc_of_token = function\n";
+  Hashtbl.iter (fun name desc ->
+    output_string output "  | ";
+    output_string output name;
+    output_string output " _ -> ";
+    output_string output desc;
+    output_string output "\n";
   ) strings
 
 
@@ -21,7 +32,9 @@ let output strings imports handler expected =
   | None -> ()
   | Some strings ->
       output_string output "\n";
-      output_tycon_function output strings
+      output_name_function output strings;
+      output_string output "\n";
+      output_desc_function output strings;
   end;
 
   output_string output "
