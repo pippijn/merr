@@ -2,15 +2,16 @@
   exception Eof
 }
 
-let digits  = ['0'-'9']
+let digit   = ['0'-'9']
+let lcase   = ['a'-'z']
 let ucase   = ['A'-'Z']
-let ident   = ucase | digits | ['a'-'z' '_']
+let ident   = lcase | ucase | digit | '_'
 
 let term    = ucase ident*
 
 let toktype = '<' [^'>']+ '>'
 
-let dstring	= '"'  ('\\' _ | [^ '\\' '"' ])* '"'
+let dstring = '"'  ('\\' _ | [^ '\\' '"' ])* '"'
 
 let ws      = [' ' '\t']
 

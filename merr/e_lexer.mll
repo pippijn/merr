@@ -23,12 +23,15 @@
     TK_STRING chars
 }
 
-let alnum	= ['A'-'Z' 'a'-'z' '0'-'9' '_']
+let digit   = ['0'-'9']
+let lcase   = ['a'-'z']
+let ucase   = ['A'-'Z']
+let ident   = lcase | ucase | digit | '_'
 
-let id		= ['a'-'z'] alnum *
-let tycon	= ['A'-'Z'] alnum *
+let id      = lcase ident*
+let tycon   = ucase ident*
 
-let dstring	= '"'  ('\\' _ | [^ '\\' '"' ])* '"'
+let dstring = '"'  ('\\' _ | [^ '\\' '"' ])* '"'
 
 rule token = parse
   | "let"		{ KW_LET }
