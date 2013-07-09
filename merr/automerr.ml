@@ -85,11 +85,22 @@ let debug token lexbuf =
   Printf.printf "%s\n" str;
   tok
 
+
+let loc_error lexbuf msg =
+  let open Lexing in
+  let { pos_lnum; pos_cnum; pos_bol } = Lexing.lexeme_start_p lexbuf in
+  failwith (
+    string_of_int pos_lnum
+    ^ ":"
+    ^ (string_of_int (pos_cnum - pos_bol))
+    ^ ": "
+    ^ msg
+  )
+
 let parse_states states =
   let lexbuf = Lexing.from_channel (open_file states) in
   try
     A_parser.parse A_lexer.token lexbuf
   with A_parser.StateError (token, state) ->
     let expected = A_errors.expected state in
-    Printf.fprintf stderr "expected one of: %s\n" (String.concat ", " expected);
-    raise Exit
+    loc_error lexbuf ("expected one of: " ^ String.concat ", " expected)
