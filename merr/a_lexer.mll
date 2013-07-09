@@ -3,14 +3,13 @@
 }
 
 
-let d = ['0'-'9']
+let digit   = ['0'-'9']
+let lcase   = ['a'-'z']
+let ucase   = ['A'-'Z']
+let ident   = lcase | ucase | digit | '_'
 
-let lcase = ['a'-'z']
-let ucase = ['A'-'Z']
-let idchar = (lcase | ucase | d | '_')
-
-let nterm = lcase idchar*
-let term = ucase (ucase | d | '_')*
+let nterm   = lcase ident*
+let term    = ucase ident*
 
 rule token = parse
   | "accept"			{ KW_ACCEPT }
@@ -39,7 +38,7 @@ rule token = parse
 
   | nterm as id			{ TK_NTERM id }
   | term as id			{ TK_TERM id }
-  | d+ as num			{ TK_INTEGER (int_of_string num) }
+  | digit+ as num		{ TK_INTEGER (int_of_string num) }
 
   | '\n'			{ TK_NEWLINE }
   | ' '				{ token lexbuf }
