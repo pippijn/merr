@@ -3,7 +3,6 @@
 module Tokens = E_tokens
 
 open E_tokens
-open E_token
 
 let message = function
   | "open" -> function
