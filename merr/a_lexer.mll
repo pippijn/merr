@@ -40,7 +40,7 @@ rule token = parse
   | term as id			{ TK_TERM id }
   | digit+ as num		{ TK_INTEGER (int_of_string num) }
 
-  | '\n'			{ TK_NEWLINE }
+  | '\n'			{ Lexing.new_line lexbuf; TK_NEWLINE }
   | ' '				{ token lexbuf }
 
   | _ as c			{ failwith ("invalid character: " ^ Char.escaped c) }
