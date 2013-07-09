@@ -107,7 +107,7 @@ let codegen out imports func table =
         let msg =
           let msg = String.escaped msg in
           if has_arg then
-            snd (BatString.replace msg "%s" "\" ^ (string_of_token arg) ^ \"")
+            snd (BatString.replace msg "%s" "\" ^ (desc_of_token arg) ^ \"")
           else
             msg
         in
@@ -121,7 +121,7 @@ let codegen out imports func table =
 let process import_out handler_out =
   let errors = Settings.errors in
   let input = Io.open_in errors in
-  let lexbuf = 
+  let lexbuf =
     let open Lexing in
     let lexbuf = from_channel input in
     lexbuf.lex_curr_p <- {
