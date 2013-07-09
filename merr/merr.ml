@@ -1,11 +1,27 @@
+let output_tycon_function output strings =
+  output_string output "let name_of_token = function\n";
+  Hashtbl.iter (fun name _ ->
+    output_string output "  | ";
+    output_string output name;
+    output_string output " _ -> \"";
+    output_string output (String.escaped name);
+    output_string output "\"\n";
+  ) strings
 
-let output imports handler expected =
+
+let output strings imports handler expected =
   let output = Io.open_out Settings.output in
   output_string output (Buffer.contents imports);
-  begin if Buffer.length expected <> 0 then
+  if Buffer.length expected <> 0 then
     output_string output (Buffer.contents expected)
   else
-    output_string output "\nlet expected state = []\n"
+    output_string output "\nlet expected state = []\n";
+
+  begin match strings with
+  | None -> ()
+  | Some strings ->
+      output_string output "\n";
+      output_tycon_function output strings
   end;
 
   output_string output "
@@ -50,14 +66,16 @@ let () =
       MakeErr.process imports handler
     end;
 
-    begin match automerr with
-    | None -> ()
-    | Some (strings, states) ->
-        Buffer.add_char expected '\n';
-        Automerr.codegen expected strings states
-    end;
+    let strings =
+      match automerr with
+      | None -> None
+      | Some (strings, states) ->
+          Buffer.add_char expected '\n';
+          Automerr.codegen expected strings states;
+          Some strings
+    in
 
-    output imports handler expected
+    output strings imports handler expected
 
   with
   | Failure msg ->
