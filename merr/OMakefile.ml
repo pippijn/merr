@@ -15,7 +15,6 @@ install Program ".DEFAULT" [
     "E_errors";
     "E_lexer";
     "E_parser";
-    "E_token";
     "E_tokens";
     "Io";
     "MakeErr";

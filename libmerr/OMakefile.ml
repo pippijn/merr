@@ -1,4 +1,4 @@
-install Library ".DEFAULT" [
+install Package ".DEFAULT" [
   (* Target *)
   Name		"merr";
   Description	"Merr support library";
@@ -7,6 +7,5 @@ install Library ".DEFAULT" [
   (* Sources *)
   Modules [
     "Levenshtein";
-    "Libmerr";
   ];
 ]
