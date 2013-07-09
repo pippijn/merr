@@ -38,16 +38,24 @@ let output strings imports handler expected =
   end;
 
   output_string output "
-module Merr = Libmerr.Make (struct
-  type token = Tokens.token
-  type state = int
+let string_of_expected state token =
+  let close_match lst tok =
+    List.filter (fun candidate ->
+      Levenshtein.distance tok candidate <= 2
+    ) lst
+  in
+  let tok_name = name_of_token token in
+  let expected =
+    match expected state with
+    | []  -> \"\"
+    | lst ->
+        match close_match lst tok_name with
+        | [] -> \"; expected one of: \" ^ (String.concat \", \" lst)
+        | xs -> \"; did you mean one of \" ^ (String.concat \", \" xs) ^ \"?\"
+  in
 
-  let eof = EOF
-  let expected = expected
-  let string_of_token = string_of_token
-end)
+  \"unexpected \" ^ (desc_of_token token) ^ expected
 
-let string_of_expected = Merr.string_of_expected
 ";
 
   output_string output (Buffer.contents handler);

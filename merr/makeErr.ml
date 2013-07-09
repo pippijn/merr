@@ -107,7 +107,7 @@ let codegen out imports func table =
         let msg =
           let msg = String.escaped msg in
           if has_arg then
-            snd (BatString.replace msg "%s" "\" ^ (string_of_token arg) ^ \"")
+            snd (BatString.replace msg "%s" "\" ^ (desc_of_token arg) ^ \"")
           else
             msg
         in
@@ -121,7 +121,7 @@ let codegen out imports func table =
 let process import_out handler_out =
   let errors = Settings.errors in
   let input = Io.open_in errors in
-  let lexbuf = 
+  let lexbuf =
     let open Lexing in
     let lexbuf = from_channel input in
     lexbuf.lex_curr_p <- {
@@ -150,7 +150,24 @@ let process import_out handler_out =
   with E_parser.StateError (token, state) as e ->
 
     begin if Settings.merr then
-      Printf.fprintf stderr "(%d, %s)\n" state "token"
+
+      let token_name = function
+        | E_tokens.TK_UNDERSCORE -> "TK_UNDERSCORE"
+        | E_tokens.TK_TYCON _ -> "TK_TYCON"
+        | E_tokens.TK_STRING _ -> "TK_STRING"
+        | E_tokens.TK_IDENTIFIER _ -> "TK_IDENTIFIER"
+        | E_tokens.TK_EQUALS -> "TK_EQUALS"
+        | E_tokens.TK_BAR -> "TK_BAR"
+        | E_tokens.TK_ARROW -> "TK_ARROW"
+        | E_tokens.KW_OPEN -> "KW_OPEN"
+        | E_tokens.KW_LET -> "KW_LET"
+        | E_tokens.KW_FUNCTION -> "KW_FUNCTION"
+        | E_tokens.KW_DEFAULT -> "KW_DEFAULT"
+        | E_tokens.KW_MODULE -> "KW_MODULE"
+        | E_tokens.EOF -> "EOF"
+      in
+
+      Printf.fprintf stderr "(%d, %s)\n" state (token_name token)
     else
       let string_of_position pos =
         let open Lexing in
