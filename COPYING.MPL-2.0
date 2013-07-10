@@ -3,5 +3,9 @@ This project and all the files contained in it are licensed under the
 unless stated otherwise. A copy of this license can be obtained from
   http://opensource.org/licenses/MPL-2.0.
 
+If this project comprises a code generation tool, the generated code can be
+conveyed under terms of your choice. Any support library required by the
+generated code, however, is still licensed under its own terms.
+
 Authors:
 	Pippijn van Steenhoven <pip88nl@gmail.com>
