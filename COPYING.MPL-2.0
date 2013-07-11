@@ -7,5 +7,10 @@ If this project comprises a code generation tool, the generated code can be
 conveyed under terms of your choice. Any support library required by the
 generated code, however, is still licensed under its own terms.
 
+The authors reserve the right to relicence the complete work, including
+foreign contributions, under another GPL-Compatible Free Software License
+recognised by the Free Software Foundation. This does not retroactively affect
+previous distributions of the work.
+
 Authors:
 	Pippijn van Steenhoven <pip88nl@gmail.com>
