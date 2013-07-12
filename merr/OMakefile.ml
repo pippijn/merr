@@ -26,7 +26,7 @@ install Program ".DEFAULT" [
   (* Library dependencies *)
   OCamlRequires [
     "batteries";
-    "merr";
+    "libmerr";
     "sexplib.syntax";
   ];
 

@@ -41,7 +41,7 @@ let output strings imports handler expected =
 let string_of_expected state token =
   let close_match lst tok =
     List.filter (fun candidate ->
-      Merr.Levenshtein.distance tok candidate <= 2
+      Libmerr.Levenshtein.distance tok candidate <= 2
     ) lst
   in
   let tok_name = name_of_token token in

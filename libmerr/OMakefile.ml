@@ -1,6 +1,6 @@
 install Package ".DEFAULT" [
   (* Target *)
-  Name		"merr";
+  Name		"libmerr";
   Description	"Merr support library";
   Version	"0.1";
 
