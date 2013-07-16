@@ -1,0 +1,10 @@
+language: c
+script: ocamlbuild -use-ocamlfind merr.native merr.byte
+
+install:
+   - sudo apt-get install ocaml-batteries-included libsexplib-camlp4-dev
+
+# whitelist
+branches:
+   only:
+      - master
