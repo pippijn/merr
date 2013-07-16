@@ -14,7 +14,7 @@ let host_merr =
     | _ -> false
   in
   try
-    Some (List.find try_exec_merr [Sys.getcwd () ^ "/merr.native"; "merr"])
+    Some (List.find try_exec_merr [Sys.getcwd () ^ "/_build/merr/merr.native"; "merr"])
   with Not_found ->
     None;;
 
