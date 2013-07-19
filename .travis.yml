@@ -1,5 +1,8 @@
 language: c
-script: ocamlbuild -use-ocamlfind merr.native merr.byte
+script:
+   # run twice, once for bootstrapping
+   - ocamlbuild -use-ocamlfind merr.native merr.byte
+   - ocamlbuild -use-ocamlfind merr.native merr.byte
 
 install:
    - sudo apt-get install ocaml-batteries-included libsexplib-camlp4-dev
