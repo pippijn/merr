@@ -2,10 +2,8 @@ language: c
 script: ocamlbuild -use-ocamlfind merr.native merr.byte
 
 install:
-   - sudo apt-get install ocaml-batteries-included libsexplib-camlp4-dev
-   - sudo wget http://xinutec.org/~pippijn/files/up/libmenhir-ocaml-dev_20130116.dfsg-1_amd64.deb
-   - sudo wget http://xinutec.org/~pippijn/files/up/menhir_20130116.dfsg-1_amd64.deb
-   - sudo dpkg -i menhir_20130116.dfsg-1_amd64.deb libmenhir-ocaml-dev_20130116.dfsg-1_amd64.deb
+   - sudo add-apt-repository ppa:pippijn/ppa
+   - sudo apt-get install ocaml-batteries-included libsexplib-camlp4-dev menhir
 
 # whitelist
 branches:
