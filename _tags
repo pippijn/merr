@@ -5,3 +5,4 @@ true:use_menhir,package(batteries),package(sexplib)
 <merr/*.ml*>:syntax(camlp4o),package(sexplib.syntax)
 "merr/e_parser.mlypack":external_tokens(E_tokens),dump
 
+<libmerr/*.cmx>: for-pack(Libmerr)
