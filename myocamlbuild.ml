@@ -45,8 +45,7 @@ dispatch begin function
       begin
         match host_merr with
         | Some merr ->
-            (* This rule generates the error parser itself. Merr has additional
-               logic here to make it meta-circular. *)
+            (* This rule generates the error parser itself. *)
 
             rule "merr: errors.ml.in -> errors.ml"
               ~prod:"%_errors.ml"
