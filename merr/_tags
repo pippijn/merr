@@ -1,0 +1,4 @@
+<*.ml*>: syntax(camlp4o), package(batteries), package(sexplib.syntax)
+<e_parser.mlypack>: external_tokens(E_tokens), dump
+
+<merr.{byte,native}>: package(batteries), package(sexplib)
