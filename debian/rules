@@ -27,6 +27,8 @@ override_dh_auto_configure:
 .PHONY: override_dh_auto_build
 override_dh_auto_build:
 	cd obuild && omake
+	rm obuild/_build/src/merr/merr/e_errors.ml
+	cd obuild && omake
 
 .PHONY: override_dh_auto_test
 override_dh_auto_test:
