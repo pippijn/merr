@@ -36,8 +36,6 @@ override_dh_auto_test:
 
 .PHONY: override_dh_auto_install
 override_dh_auto_install:
-	mkdir -p '$(DESTDIR)$(prefix)/bin'
-	mkdir -p '$(OCAMLFIND_DESTDIR)'
 	mkdir -p '$(OCAMLFIND_DESTDIR)/stublibs'
 	cd obuild && omake install prefix='$(prefix)' DESTDIR='$(DESTDIR)'
 
