@@ -1,0 +1,47 @@
+Source: ocaml-merr
+Section: ocaml
+Priority: optional
+Maintainer: Pippijn van Steenhoven <pip88nl@gmail.com>
+Uploaders: 
+  Pippijn van Steenhoven <pip88nl@gmail.com>
+Build-Depends:
+  ocaml-nox (>= 3.12),
+  ocaml-findlib,
+  git,
+  omake,
+  libsexplib-camlp4-dev,
+  dh-ocaml,
+  debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Homepage: https://github.com/pippijn/merr
+Vcs-Git: git://github.com/pippijn/merr
+Vcs-Browser: https://github.com/pippijn/merr
+
+Package: merr
+Architecture: any
+Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
+Provides: ${ocaml:Provides}
+Description: Common library for OCaml projects
+ This library contains some common modules I use for
+ most of my projects.
+ .
+ This package contains the shared runtime libraries.
+
+Package: libmerr-ocaml
+Architecture: any
+Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
+Provides: ${ocaml:Provides}
+Description: Common library for OCaml projects
+ This library contains some common modules I use for
+ most of my projects.
+ .
+ This package contains the shared runtime libraries.
+
+Package: libmerr-ocaml-dev
+Architecture: any
+Depends: ${ocaml:Depends}, ${misc:Depends}
+Provides: ${ocaml:Provides}
+Recommends: ocaml-findlib
+Description: Common library for OCaml projects
+ This library contains some common modules I use for
+ most of my projects.

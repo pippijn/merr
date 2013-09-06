@@ -1,0 +1,5 @@
+ocaml-merr (0.1) precise; urgency=low
+
+  * Initial release. (Closes: #9999)
+
+ -- Pippijn van Steenhoven <pip88nl@gmail.com>  Fri, 06 Sep 2013 00:59:57 +0200

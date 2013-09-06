@@ -1,0 +1,3 @@
+@OCamlStdlibDir@/libmerr/*.a
+@OCamlStdlibDir@/libmerr/*.cm[ix]
+@OCamlStdlibDir@/libmerr/*.cmxa

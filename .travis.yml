@@ -1,8 +1,5 @@
 language: c
-script:
-   # run twice, once for bootstrapping
-   - ocamlbuild -use-ocamlfind merr/merr.native merr/merr.byte
-   - ocamlbuild -use-ocamlfind merr/merr.native merr/merr.byte
+script: dpkg-buildpackage -b -us -uc
 
 install:
    - sudo add-apt-repository -y ppa:pippijn/ppa
@@ -13,3 +10,4 @@ install:
 branches:
    only:
       - master
+      - /.*\/staging/

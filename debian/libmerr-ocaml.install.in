@@ -1,0 +1,3 @@
+@OCamlStdlibDir@/libmerr/META
+@OCamlStdlibDir@/libmerr/*.cma
+@OCamlStdlibDir@/libmerr/*.cmxs
