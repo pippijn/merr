@@ -37,5 +37,5 @@ install Program ".DEFAULT" [
     "makeErr.ml",	"-syntax camlp4o";
   ];
 
-  Var ("RUNMERR", "merr.native -merr -e -");
+  Var ("RUNMERR", "$(bindir)/merr.native -merr -e -");
 ]
