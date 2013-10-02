@@ -5,12 +5,8 @@ install:
    # Add PPA to download from.
    - sudo apt-add-repository -y ppa:pippijn/ppa
    - sudo apt-get update
-   # GitHub dependencies.
-   - sudo apt-get install devscripts equivs
-   - wget https://raw.github.com/pippijn/obuild/master/script/travis-depend?$(date +%s) -O travis-depend
-   - chmod +x travis-depend
-   - ./travis-depend obuild baselib
    # Package dependencies.
+   - sudo apt-get install devscripts equivs
    - sudo mk-build-deps -ir
 
 # whitelist
