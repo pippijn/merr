@@ -1,0 +1,35 @@
+Name = merr
+
+OCaml-Sources[] =
+  A_ast
+  A_errors
+  A_lexer
+  A_parser
+  Automerr
+  Colour
+  Diagnostics
+  E_ast
+  E_errors
+  E_lexer
+  E_parser
+  E_tokens
+  Io
+  MakeErr
+  Merr
+  Settings
+  T_lexer
+
+OCaml-Requires[] =
+  batteries
+  libmerr
+  sexplib.syntax
+
+Flags. +=
+  $|a_ast.ml|		= -syntax camlp4o
+  $|e_ast.ml|		= -syntax camlp4o
+  $|makeErr.ml|		= -syntax camlp4o
+
+RUNMERR = $(bindir)/merr.native -merr -e -
+
+TARGET = $(program-install)
+.DEFAULT: $(TARGET)

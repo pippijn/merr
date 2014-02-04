@@ -1,1 +1,1 @@
-recurse-into ($(glob D, *))
+recurse ()

@@ -1,0 +1,9 @@
+Name = libmerr
+Description = Merr support library
+Version = 0.1
+
+OCaml-Sources[] =
+  Levenshtein
+
+TARGET = $(ocaml-pack-install)
+.DEFAULT: $(TARGET)
