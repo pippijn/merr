@@ -1,6 +1,6 @@
-Name = libmerr
-Description = Merr support library
-Version = 0.1
+Name		= libmerr
+Description	= Merr support library
+Version		= 0.1
 
 OCaml-Sources[] =
   Levenshtein
